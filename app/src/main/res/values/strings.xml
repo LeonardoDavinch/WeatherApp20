@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name" translatable="false">My Wether APP</string>
+    <string name="logoText" translatable="false">Погода в вашому місті</string>
+    <string name="hint_user_field" translatable="false">Ведіть місто</string>
+    <string name="main_button" translatable="false">Дізнатись погоду</string>
+    <string name="no_user_input" translatable="false">Ви не вели текст</string>
+    <string name="Rain" translatable="false">Температура°C</string>
+    <string name="Wind_Spead" translatable="false">вітер м/с</string>
+    <string name="Humidity" translatable="false">вологість %</string>
+
+</resources>
