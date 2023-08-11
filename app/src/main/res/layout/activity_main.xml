@@ -295,13 +295,166 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/main_button"
-            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/TextColor"
-            android:textColorHint="@color/textColorHint"
+            android:layout_marginTop="15dp"
+            android:ems="10"
             android:textAlignment="center"
-            android:ems="10" />
+            android:textColor="@color/TextColor"
+            android:textColorHint="@color/textColorHint" />
 
+        <TableLayout
+            android:id="@+id/tableLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="700sp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/dayfor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="6"
+                    android:background="@color/colorAccent"
+                    android:gravity="center"
+                    android:text="@string/dayFor"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                >
+
+                <TextView
+                    android:id="@+id/dataday0"
+                    android:text="@string/Dataday"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/dataday1"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/dataday2"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/dataday3"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/dataday4"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/dataday5"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent">
+
+                <TextView
+                    android:id="@+id/maxdayTemp"
+                    android:text="@string/maxdayTemp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/maxday1"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/maxday2"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/maxday3"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/maxday4"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/maxday5"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:background="@color/colorAccent">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:text="@string/mindayTemp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/day01"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/day02"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/day03"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/day04"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/day05"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    />
+            </TableRow>
+        </TableLayout>
     </RelativeLayout>
 
 </ScrollView>

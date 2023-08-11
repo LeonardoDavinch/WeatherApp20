@@ -11,4 +11,12 @@
     <string name="Show" translatable="false">Видимість</string>
     <string name="Tis" translatable="false">Очікується</string>
 
+    <string name="dayFor" translatable="false">Прогноз на 5 днів</string>
+    <string name="maxdayTemp" translatable="false">макисмально</string>
+    <string name="mindayTemp" translatable="false">мінімально</string>
+    <string name="Dataday" translatable="false">Дата</string>
+    <string name="button2" translatable="false">Дізнатись погоду на 5 днів </string>
+
+
+
 </resources>
