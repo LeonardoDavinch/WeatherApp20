@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.provider.ContactsContract.Data;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,9 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,16 +43,22 @@ public class MainActivity extends AppCompatActivity {
     private TextView dataday3;
     private TextView dataday4;
     private TextView dataday5;
+    private TextView dataday6;
+    private TextView dataday7;
     private TextView maxday1;
     private TextView maxday2;
     private TextView maxday3;
     private TextView maxday4;
     private TextView maxday5;
+    private TextView maxday6;
+    private TextView maxday7;
     private TextView minday01;
     private TextView minday02;
     private TextView minday03;
     private TextView minday04;
     private TextView minday05;
+    private TextView minday06;
+    private TextView minday07;
 
 
     @Override
@@ -73,23 +75,31 @@ public class MainActivity extends AppCompatActivity {
         res_Show = findViewById(R.id.res_Show);
         res_Tis = findViewById(R.id.res_Tis);
         res_data = findViewById(R.id.res_data);
+
         dataday1 = findViewById(R.id.dataday1);
         dataday2 = findViewById(R.id.dataday2);
         dataday3 = findViewById(R.id.dataday3);
         dataday4 = findViewById(R.id.dataday4);
         dataday5 = findViewById(R.id.dataday5);
+        dataday6 = findViewById(R.id.dataday6);
+        dataday7 = findViewById(R.id.dataday7);
+
 
         maxday1 = findViewById(R.id.maxday1);
         maxday2 = findViewById(R.id.maxday2);
         maxday3 = findViewById(R.id.maxday3);
         maxday4 = findViewById(R.id.maxday4);
         maxday5 = findViewById(R.id.maxday5);
+        maxday6 = findViewById(R.id.maxday6);
+        maxday7 = findViewById(R.id.maxday7);
 
         minday01 = findViewById(R.id.day01);
         minday02 = findViewById(R.id.day02);
         minday03 = findViewById(R.id.day03);
         minday04 = findViewById(R.id.day04);
         minday05 = findViewById(R.id.day05);
+        minday06 = findViewById(R.id.day06);
+        minday07 = findViewById(R.id.day07);
 
 
         main_button.setOnClickListener(view -> {
@@ -236,6 +246,14 @@ public class MainActivity extends AppCompatActivity {
                 dataday5.setText(date);
                 maxday5.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
                 minday05.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
+            } else if (dataday6.getText().toString().equals("")) {
+                dataday6.setText(date);
+                maxday6.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
+                minday06.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
+            } else if (dataday7.getText().toString().equals("")) {
+                dataday7.setText(date);
+                maxday7.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
+                minday07.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
             }
         }
 
@@ -245,18 +263,24 @@ public class MainActivity extends AppCompatActivity {
             dataday3.setText("");
             dataday4.setText("");
             dataday5.setText("");
+            dataday6.setText("");
+            dataday7.setText("");
 
             maxday1.setText("");
             maxday2.setText("");
             maxday3.setText("");
             maxday4.setText("");
             maxday5.setText("");
+            maxday6.setText("");
+            maxday7.setText("");
 
             minday01.setText("");
             minday02.setText("");
             minday03.setText("");
             minday04.setText("");
             minday05.setText("");
+            minday06.setText("");
+            minday07.setText("");
         }
     }
 
