@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_2"
     tools:context=".MainActivity">
-
     <RelativeLayout
+        android:id="@+id/Bac1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/back_2"
+        android:background="@drawable/weatherbeak"
         tools:context=".MainActivity">
-
         <LinearLayout
             android:layout_width="326dp"
             android:layout_height="146dp"
@@ -164,7 +162,7 @@
             android:ems="10"
             android:hint="@string/hint_user_field"
             android:inputType="text"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textColor="@color/TextColor"
             android:textColorHint="@color/textColorHint" />
 
@@ -305,7 +303,7 @@
         <TableLayout
             android:id="@+id/tableLayout1"
             android:layout_width="match_parent"
-            android:layout_height="359dp"
+            android:layout_height="330dp"
             android:layout_marginTop="700sp"
             android:shrinkColumns="*"
             android:stretchColumns="*" />
@@ -535,7 +533,33 @@
 
         </TableLayout>
 
-
+        <ImageButton
+            android:id="@+id/imageButton01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1070sp"
+           android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/colorAccent"
+            android:src="@android:drawable/ic_dialog_email"
+            android:contentDescription="TODO" />
+        <ImageButton
+            android:id="@+id/imageButton02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageButton01"
+            android:backgroundTint="@color/colorAccent"
+            android:layout_marginHorizontal="200sp"
+            android:src="@android:drawable/ic_menu_mapmode"
+            android:contentDescription="TODO" />
+        <ImageButton
+            android:id="@+id/imageButton03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageButton01"
+            android:backgroundTint="@color/colorAccent"
+            android:layout_marginHorizontal="100sp"
+            android:src="@android:drawable/ic_menu_preferences"
+            android:contentDescription="TODO" />
     </RelativeLayout>
 
 </ScrollView>

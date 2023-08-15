@@ -1,12 +1,19 @@
 package com.example.mywether20;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +29,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,33 +47,28 @@ public class MainActivity extends AppCompatActivity {
     private TextView res_Tis;
 
     private TextView res_data;
-    private TextView dataday1;
-    private TextView dataday2;
-    private TextView dataday3;
-    private TextView dataday4;
-    private TextView dataday5;
-    private TextView dataday6;
-    private TextView dataday7;
-    private TextView maxday1;
-    private TextView maxday2;
-    private TextView maxday3;
-    private TextView maxday4;
-    private TextView maxday5;
-    private TextView maxday6;
-    private TextView maxday7;
-    private TextView minday01;
-    private TextView minday02;
-    private TextView minday03;
-    private TextView minday04;
-    private TextView minday05;
-    private TextView minday06;
-    private TextView minday07;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RelativeLayout relativeLayout = findViewById(R.id.Bac1);
+
+        // Отримати поточну годину
+        Calendar cal = Calendar.getInstance();
+        int currentHour = cal.get(Calendar.HOUR_OF_DAY);
+
+        // Визначити, чи є зараз день чи ніч
+        boolean isDaytime = currentHour >= 6 && currentHour < 18;
+
+        if (isDaytime) {
+            relativeLayout.setBackgroundResource(R.drawable.weatherbeak);
+        } else {
+            relativeLayout.setBackgroundResource(R.drawable.niaght);
+        }
+
 
         user_field = findViewById(R.id.user_field);
         main_button = findViewById(R.id.main_button);
@@ -75,32 +79,6 @@ public class MainActivity extends AppCompatActivity {
         res_Show = findViewById(R.id.res_Show);
         res_Tis = findViewById(R.id.res_Tis);
         res_data = findViewById(R.id.res_data);
-
-        dataday1 = findViewById(R.id.dataday1);
-        dataday2 = findViewById(R.id.dataday2);
-        dataday3 = findViewById(R.id.dataday3);
-        dataday4 = findViewById(R.id.dataday4);
-        dataday5 = findViewById(R.id.dataday5);
-        dataday6 = findViewById(R.id.dataday6);
-        dataday7 = findViewById(R.id.dataday7);
-
-
-        maxday1 = findViewById(R.id.maxday1);
-        maxday2 = findViewById(R.id.maxday2);
-        maxday3 = findViewById(R.id.maxday3);
-        maxday4 = findViewById(R.id.maxday4);
-        maxday5 = findViewById(R.id.maxday5);
-        maxday6 = findViewById(R.id.maxday6);
-        maxday7 = findViewById(R.id.maxday7);
-
-        minday01 = findViewById(R.id.day01);
-        minday02 = findViewById(R.id.day02);
-        minday03 = findViewById(R.id.day03);
-        minday04 = findViewById(R.id.day04);
-        minday05 = findViewById(R.id.day05);
-        minday06 = findViewById(R.id.day06);
-        minday07 = findViewById(R.id.day07);
-
 
         main_button.setOnClickListener(view -> {
             String city = user_field.getText().toString().trim();
@@ -118,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
                 new GetWeatherDataTask().execute(currentWeatherUrl);
                 new GetForecastDataTask().execute(forecastUrl);
-
             } else {
                 Toast.makeText(MainActivity.this, "Введіть назву міста", Toast.LENGTH_SHORT).show();
             }
@@ -126,8 +103,55 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class GetForecastDataTask extends AsyncTask<String, Void, String> {
+        private TextView dataday1;
+        private TextView dataday2;
+        private TextView dataday3;
+        private TextView dataday4;
+        private TextView dataday5;
+        private TextView dataday6;
+        private TextView dataday7;
+        private TextView maxday1;
+        private TextView maxday2;
+        private TextView maxday3;
+        private TextView maxday4;
+        private TextView maxday5;
+        private TextView maxday6;
+        private TextView maxday7;
+        private TextView minday01;
+        private TextView minday02;
+        private TextView minday03;
+        private TextView minday04;
+        private TextView minday05;
+        private TextView minday06;
+        private TextView minday07;
+
         @Override
         protected String doInBackground(String... strings) {
+            dataday1 = findViewById(R.id.dataday1);
+            dataday2 = findViewById(R.id.dataday2);
+            dataday3 = findViewById(R.id.dataday3);
+            dataday4 = findViewById(R.id.dataday4);
+            dataday5 = findViewById(R.id.dataday5);
+            dataday6 = findViewById(R.id.dataday6);
+            dataday7 = findViewById(R.id.dataday7);
+
+
+            maxday1 = findViewById(R.id.maxday1);
+            maxday2 = findViewById(R.id.maxday2);
+            maxday3 = findViewById(R.id.maxday3);
+            maxday4 = findViewById(R.id.maxday4);
+            maxday5 = findViewById(R.id.maxday5);
+            maxday6 = findViewById(R.id.maxday6);
+            maxday7 = findViewById(R.id.maxday7);
+
+            minday01 = findViewById(R.id.day01);
+            minday02 = findViewById(R.id.day02);
+            minday03 = findViewById(R.id.day03);
+            minday04 = findViewById(R.id.day04);
+            minday05 = findViewById(R.id.day05);
+            minday06 = findViewById(R.id.day06);
+            minday07 = findViewById(R.id.day07);
+
             HttpURLConnection connection = null;
             BufferedReader reader = null;
 
