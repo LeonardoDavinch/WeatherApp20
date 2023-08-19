@@ -1,18 +1,16 @@
 package com.example.mywether20;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
-import android.os.Build;
+
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,12 +30,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText user_field;
-    private Button main_button;
     private TextView res_temp;
     private TextView res_winter;
     private TextView res_Humidity;
@@ -64,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
         boolean isDaytime = currentHour >= 6 && currentHour < 18;
 
         if (isDaytime) {
-            relativeLayout.setBackgroundResource(R.drawable.weatherbeak);
+            relativeLayout.setBackgroundResource(R.drawable.day);
         } else {
             relativeLayout.setBackgroundResource(R.drawable.niaght);
         }
 
 
         user_field = findViewById(R.id.user_field);
-        main_button = findViewById(R.id.main_button);
+        Button main_button = findViewById(R.id.main_button);
         res_temp = findViewById(R.id.res_temp);
         res_winter = findViewById(R.id.res_winter);
         res_Humidity = findViewById(R.id.res_Humidity);
@@ -102,28 +99,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private class GetForecastDataTask extends AsyncTask<String, Void, String> {
-        private TextView dataday1;
-        private TextView dataday2;
-        private TextView dataday3;
-        private TextView dataday4;
-        private TextView dataday5;
-        private TextView dataday6;
-        private TextView dataday7;
-        private TextView maxday1;
-        private TextView maxday2;
-        private TextView maxday3;
-        private TextView maxday4;
-        private TextView maxday5;
-        private TextView maxday6;
-        private TextView maxday7;
-        private TextView minday01;
-        private TextView minday02;
-        private TextView minday03;
-        private TextView minday04;
-        private TextView minday05;
-        private TextView minday06;
-        private TextView minday07;
+        private TextView dataday1,dataday2,dataday3,dataday4,dataday5;
+        private TextView maxday1,maxday2,maxday3,maxday4,maxday5;
+        private TextView minday01, minday02,minday03,minday04,minday05;
+        private TextView meybe1,meybe2 ,meybe3, meybe4, meybe5;
+
 
         @Override
         protected String doInBackground(String... strings) {
@@ -132,8 +114,7 @@ public class MainActivity extends AppCompatActivity {
             dataday3 = findViewById(R.id.dataday3);
             dataday4 = findViewById(R.id.dataday4);
             dataday5 = findViewById(R.id.dataday5);
-            dataday6 = findViewById(R.id.dataday6);
-            dataday7 = findViewById(R.id.dataday7);
+
 
 
             maxday1 = findViewById(R.id.maxday1);
@@ -141,16 +122,21 @@ public class MainActivity extends AppCompatActivity {
             maxday3 = findViewById(R.id.maxday3);
             maxday4 = findViewById(R.id.maxday4);
             maxday5 = findViewById(R.id.maxday5);
-            maxday6 = findViewById(R.id.maxday6);
-            maxday7 = findViewById(R.id.maxday7);
+
 
             minday01 = findViewById(R.id.day01);
             minday02 = findViewById(R.id.day02);
             minday03 = findViewById(R.id.day03);
             minday04 = findViewById(R.id.day04);
             minday05 = findViewById(R.id.day05);
-            minday06 = findViewById(R.id.day06);
-            minday07 = findViewById(R.id.day07);
+
+
+            meybe1=findViewById(R.id.meybe1);
+            meybe2=findViewById(R.id.meybe2);
+            meybe3=findViewById(R.id.meybe3);
+            meybe4=findViewById(R.id.meybe4);
+            meybe5=findViewById(R.id.meybe5);
+
 
             HttpURLConnection connection = null;
             BufferedReader reader = null;
@@ -199,20 +185,28 @@ public class MainActivity extends AppCompatActivity {
                     clearForecastData();
 
                     SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-                    SimpleDateFormat outputDateFormat = new SimpleDateFormat("dd-MM", Locale.getDefault());
+                    SimpleDateFormat outputDateFormat = new SimpleDateFormat("EE.dd.MM", new Locale("uk", "UA"));
 
                     String currentDate = "";
                     double maxTemp = Double.MIN_VALUE;
                     double minTemp = Double.MAX_VALUE;
+                    String weatherDescription = "";
 
                     for (int i = 0; i < list.length(); i++) {
                         JSONObject forecastItem = list.getJSONObject(i);
                         JSONObject main = forecastItem.getJSONObject("main");
+                        JSONArray weatherArray = forecastItem.getJSONArray("weather");
                         double temp = main.getDouble("temp");
 
                         String dateTime = forecastItem.getString("dt_txt");
                         Date parsedDate = inputFormat.parse(dateTime);
                         String date = outputDateFormat.format(parsedDate);
+
+                        // Отримуємо опис погоди
+                        if (weatherArray.length() > 0) {
+                            JSONObject weatherObject = weatherArray.getJSONObject(0);
+                            weatherDescription = weatherObject.getString("description");
+                        }
 
                         // Пропускаємо поточний день в прогнозі
                         if (date.equals(outputDateFormat.format(new Date()))) {
@@ -222,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                         // Якщо дата змінилася або досягнута остання година прогнозу
                         if (!date.equals(currentDate) || i == list.length() - 1) {
                             // Додати дані до TextView для поточного дня
-                            addForecastData(currentDate, maxTemp, minTemp);
+                            addForecastData(currentDate, maxTemp, minTemp, weatherDescription);
 
                             // Обнулити змінні для нового дня
                             currentDate = date;
@@ -248,8 +242,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        private void addForecastData(String date, double maxTemp, double minTemp, String weatherDescription) {
+            // Отримуємо текстові поля для опису погоди
+            TextView[] maybeViews = {meybe1, meybe2, meybe3, meybe4, meybe5};
 
-        private void addForecastData(String date, double maxTemp, double minTemp) {
+            for (TextView maybeView : maybeViews) {
+                if (maybeView.getText().toString().equals("")) {
+                    maybeView.setText(weatherDescription);
+                    break;
+                }
+            }
+
             if (dataday1.getText().toString().equals("")) {
                 dataday1.setText(date);
                 maxday1.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
@@ -270,14 +273,6 @@ public class MainActivity extends AppCompatActivity {
                 dataday5.setText(date);
                 maxday5.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
                 minday05.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
-            } else if (dataday6.getText().toString().equals("")) {
-                dataday6.setText(date);
-                maxday6.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
-                minday06.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
-            } else if (dataday7.getText().toString().equals("")) {
-                dataday7.setText(date);
-                maxday7.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
-                minday07.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
             }
         }
 
@@ -287,24 +282,21 @@ public class MainActivity extends AppCompatActivity {
             dataday3.setText("");
             dataday4.setText("");
             dataday5.setText("");
-            dataday6.setText("");
-            dataday7.setText("");
+
 
             maxday1.setText("");
             maxday2.setText("");
             maxday3.setText("");
             maxday4.setText("");
             maxday5.setText("");
-            maxday6.setText("");
-            maxday7.setText("");
+
 
             minday01.setText("");
             minday02.setText("");
             minday03.setText("");
             minday04.setText("");
             minday05.setText("");
-            minday06.setText("");
-            minday07.setText("");
+
         }
     }
 
@@ -358,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject weather = jsonObject.getJSONArray("weather").getJSONObject(0);
 
                     Date currentDate = new Date();
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("EE.dd.MM.yyyy", new Locale("uk", "UA"));
                     String DataLocal = dateFormat.format(currentDate);
 
                     double temperature = main.getDouble("temp");

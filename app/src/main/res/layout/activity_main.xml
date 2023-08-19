@@ -9,7 +9,7 @@
         android:id="@+id/Bac1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/weatherbeak"
+        android:background="@drawable/day"
         tools:context=".MainActivity">
         <LinearLayout
             android:layout_width="326dp"
@@ -66,7 +66,7 @@
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:src="@drawable/wind" />
 
                 <TextView
@@ -172,10 +172,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/user_field"
             android:layout_marginHorizontal="110sp"
-            android:layout_marginTop="20sp"
+            android:layout_marginTop="18dp"
             android:backgroundTint="@color/colorAccent"
             android:fontFamily="monospace"
-            android:text="@string/main_button" />
+            android:text="@string/main_button"
+            android:textColor="@color/white" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -231,7 +232,7 @@
                 <ImageView
                     android:id="@+id/Image3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:src="@drawable/wind" />
 
                 <TextView
@@ -316,6 +317,12 @@
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal">
 
+            <ImageView
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:padding="8dp"
+                android:src="@drawable/calendar" />
+
             <TextView
                 android:id="@+id/dayfor"
                 android:layout_width="match_parent"
@@ -328,6 +335,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:typeface="serif" />
+
         </TableRow>
 
         <TableLayout
@@ -345,7 +353,7 @@
 
                 <TextView
                     android:id="@+id/headerDate"
-                    android:padding="8dp"
+                    android:padding="4dp"
                     android:text="@string/Dataday"
                     android:textColor="@color/white"
                     android:textStyle="bold"
@@ -354,7 +362,7 @@
                 <TextView
                     android:id="@+id/headerMinTemp"
                     android:gravity="center_horizontal"
-                    android:padding="8dp"
+                    android:padding="4dp"
                     android:text="@string/mindayTemp"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
@@ -362,8 +370,16 @@
                 <TextView
                     android:id="@+id/headerMaxTemp"
                     android:gravity="center_horizontal"
-                    android:padding="8dp"
+                    android:padding="4dp"
                     android:text="@string/maxdayTemp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/headeMeybe"
+
+                    android:padding="4dp"
+                    android:text="@string/MeybyWeather"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
             </TableRow>
@@ -381,12 +397,17 @@
                 <TextView
                     android:id="@+id/day01"
                     android:gravity="center_horizontal"
-                    android:padding="8dp"
+                    android:padding="5dp"
                     android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/maxday1"
                     android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/meybe1"
                     android:padding="8dp"
                     android:textColor="@color/white" />
             </TableRow>
@@ -398,18 +419,22 @@
 
                 <TextView
                     android:id="@+id/dataday2"
-                    android:padding="8dp"
+                    android:padding="5dp"
                     android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/day02"
                     android:gravity="center_horizontal"
-                    android:padding="8dp"
+                    android:padding="5dp"
                     android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/maxday2"
                     android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/meybe2"
                     android:padding="8dp"
                     android:textColor="@color/white" />
             </TableRow>
@@ -427,12 +452,16 @@
                 <TextView
                     android:id="@+id/day03"
                     android:gravity="center_horizontal"
-                    android:padding="8dp"
+                    android:padding="5dp"
                     android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/maxday3"
                     android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/meybe3"
                     android:padding="8dp"
                     android:textColor="@color/white" />
             </TableRow>
@@ -450,12 +479,16 @@
                 <TextView
                     android:id="@+id/day04"
                     android:gravity="center_horizontal"
-                    android:padding="8dp"
+                    android:padding="5dp"
                     android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/maxday4"
                     android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/meybe4"
                     android:padding="8dp"
                     android:textColor="@color/white" />
             </TableRow>
@@ -473,93 +506,63 @@
                 <TextView
                     android:id="@+id/day05"
                     android:gravity="center_horizontal"
-                    android:padding="8dp"
+                    android:padding="5dp"
                     android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/maxday5"
                     android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/meybe5"
                     android:padding="8dp"
                     android:textColor="@color/white" />
             </TableRow>
 
-            <TableRow
-                android:id="@+id/tableRow6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/dataday6"
-                    android:padding="8dp"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/day06"
-                    android:gravity="center_horizontal"
-                    android:padding="8dp"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/maxday6"
-                    android:gravity="center_horizontal"
-                    android:padding="8dp"
-                    android:textColor="@color/white" />
-
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/dataday7"
-                    android:padding="8dp"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/day07"
-                    android:gravity="center_horizontal"
-                    android:padding="8dp"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/maxday7"
-                    android:gravity="center_horizontal"
-                    android:padding="8dp"
-                    android:textColor="@color/white" />
-
-            </TableRow>
 
         </TableLayout>
 
-        <ImageButton
-            android:id="@+id/imageButton01"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1070sp"
-           android:layout_centerHorizontal="true"
-            android:backgroundTint="@color/colorAccent"
-            android:src="@android:drawable/ic_dialog_email"
-            android:contentDescription="TODO" />
-        <ImageButton
-            android:id="@+id/imageButton02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imageButton01"
-            android:backgroundTint="@color/colorAccent"
-            android:layout_marginHorizontal="200sp"
-            android:src="@android:drawable/ic_menu_mapmode"
-            android:contentDescription="TODO" />
-        <ImageButton
-            android:id="@+id/imageButton03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imageButton01"
-            android:backgroundTint="@color/colorAccent"
-            android:layout_marginHorizontal="100sp"
-            android:src="@android:drawable/ic_menu_preferences"
-            android:contentDescription="TODO" />
+            android:orientation="horizontal"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="60dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="1000dp">
+
+            <ImageButton
+                android:id="@+id/imageButton01"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/colorAccent"
+                android:src="@android:drawable/ic_dialog_email"
+                android:contentDescription="TODO" />
+
+            <ImageButton
+                android:id="@+id/imageButton02"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/colorAccent"
+                android:src="@android:drawable/ic_menu_mapmode"
+                android:contentDescription="TODO" />
+
+            <ImageButton
+                android:id="@+id/imageButton03"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/colorAccent"
+                android:src="@android:drawable/ic_menu_preferences"
+                android:contentDescription="TODO" />
+        </LinearLayout>
+
+
+
     </RelativeLayout>
 
 </ScrollView>
