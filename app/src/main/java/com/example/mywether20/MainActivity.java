@@ -8,9 +8,12 @@ import android.os.AsyncTask;
 
 import android.os.Bundle;
 
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,15 +38,15 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private EditText user_field;
-    private TextView res_temp;
-    private TextView res_winter;
-    private TextView res_Humidity;
+    public TextView res_temp, res_winter, res_Humidity, res_timeTemp, res_Show, res_Tis, res_data;
 
-    private TextView res_timeTemp;
-    private TextView res_Show;
-    private TextView res_Tis;
-
-    private TextView res_data;
+    private TextView temperatureHoue0, temperatureHoue1, temperatureHoue2, temperatureHoue3,
+            temperatureHoue4, temperatureHoue5, temperatureHoue6, temperatureHoue7,
+            temperatureHoue8, temperatureHoue9, temperatureHoue10,
+            temperatureHoue11, temperatureHoue12, temperatureHoue13,
+            temperatureHoue14, temperatureHoue15, temperatureHoue16, temperatureHoue17,
+            temperatureHoue18, temperatureHoue19, temperatureHoue20, temperatureHoue21,
+            temperatureHoue22, temperatureHoue23;
 
 
     @Override
@@ -51,7 +54,66 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.user_field);
+
+        // Отримання списку міст з ресурсів
+        String[] cityList = getResources().getStringArray(R.array.city_list);
+
+        // Створення адаптера для автозаповнення
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_dropdown_item_1line,
+                cityList
+        );
+
+        // Налаштування адаптера для AutoCompleteTextView
+        autoCompleteTextView.setAdapter(adapter);
+
+        // Додавання можливості ручного вводу
+        autoCompleteTextView.setThreshold(1); // 1 символ
+
+
+        //Прослуховування кнопок
+        ImageButtonHandler imageButtonHandler = new ImageButtonHandler(this);
+
+        ImageButton b_Message = findViewById(R.id.B_Message);
+        ImageButton b_Google = findViewById(R.id.B_Google);
+        ImageButton b_Setting = findViewById(R.id.B_Setting);
+
+        b_Message.setOnClickListener(imageButtonHandler);
+        b_Google.setOnClickListener(imageButtonHandler);
+        b_Setting.setOnClickListener(imageButtonHandler);
+
         RelativeLayout relativeLayout = findViewById(R.id.Bac1);
+
+
+        //вивід температури по годинам
+        temperatureHoue0 = findViewById(R.id.temperatureHoue0);
+        temperatureHoue1 = findViewById(R.id.temperatureHoue1);
+        temperatureHoue2 = findViewById(R.id.temperatureHou2);
+        temperatureHoue3 = findViewById(R.id.temperatureHou3);
+        temperatureHoue4 = findViewById(R.id.temperatureHou4);
+        temperatureHoue5 = findViewById(R.id.temperatureHou5);
+        temperatureHoue6 = findViewById(R.id.temperatureHou6);
+        temperatureHoue7 = findViewById(R.id.temperatureHou7);
+        temperatureHoue8 = findViewById(R.id.temperatureHou8);
+        temperatureHoue9 = findViewById(R.id.temperatureHou9);
+        temperatureHoue10 = findViewById(R.id.temperatureHou10);
+        temperatureHoue11 = findViewById(R.id.temperatureHou11);
+        temperatureHoue12 = findViewById(R.id.temperatureHou12);
+        temperatureHoue13 = findViewById(R.id.temperatureHou13);
+        temperatureHoue14 = findViewById(R.id.temperatureHou14);
+        temperatureHoue15 = findViewById(R.id.temperatureHou15);
+        temperatureHoue16 = findViewById(R.id.temperatureHou16);
+        temperatureHoue17 = findViewById(R.id.temperatureHou17);
+        temperatureHoue18 = findViewById(R.id.temperatureHou18);
+        temperatureHoue19 = findViewById(R.id.temperatureHou19);
+        temperatureHoue20 = findViewById(R.id.temperatureHou20);
+        temperatureHoue21 = findViewById(R.id.temperatureHou21);
+        temperatureHoue22 = findViewById(R.id.temperatureHou22);
+        temperatureHoue23 = findViewById(R.id.temperatureHou23);
+
 
         // Отримати поточну годину
         Calendar cal = Calendar.getInstance();
@@ -90,214 +152,57 @@ public class MainActivity extends AppCompatActivity {
                 String currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" +
                         city + "&appid=" + apiKey + "&units=metric&lang=uk";
 
+                TextView[] hourTemperatureViews = {
+                        temperatureHoue0, temperatureHoue1, temperatureHoue2, temperatureHoue3, temperatureHoue4,
+                        temperatureHoue5, temperatureHoue6, temperatureHoue7, temperatureHoue8, temperatureHoue9,
+                        temperatureHoue10, temperatureHoue11, temperatureHoue12, temperatureHoue13, temperatureHoue14,
+                        temperatureHoue15, temperatureHoue16, temperatureHoue17, temperatureHoue18, temperatureHoue19,
+                        temperatureHoue20, temperatureHoue21, temperatureHoue22, temperatureHoue23
+                };
+
+                String hourlyWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" +
+                        city + "&appid=" + apiKey + "&units=metric&lang=uk";
+
+                new GetHourlyTemperatureTask(hourTemperatureViews).execute(hourlyWeatherUrl);
 
                 new GetWeatherDataTask().execute(currentWeatherUrl);
-                new GetForecastDataTask().execute(forecastUrl);
+                TextView[] dateViews = {
+                        findViewById(R.id.dataday1),
+                        findViewById(R.id.dataday2),
+                        findViewById(R.id.dataday3),
+                        findViewById(R.id.dataday4),
+                        findViewById(R.id.dataday5)
+                };
+
+                TextView[] maxTempViews = {
+                        findViewById(R.id.maxday1),
+                        findViewById(R.id.maxday2),
+                        findViewById(R.id.maxday3),
+                        findViewById(R.id.maxday4),
+                        findViewById(R.id.maxday5)
+                };
+
+                TextView[] minTempViews = {
+                        findViewById(R.id.day01),
+                        findViewById(R.id.day02),
+                        findViewById(R.id.day03),
+                        findViewById(R.id.day04),
+                        findViewById(R.id.day05)
+                };
+
+                TextView[] maybeViews = {
+                        findViewById(R.id.meybe1),
+                        findViewById(R.id.meybe2),
+                        findViewById(R.id.meybe3),
+                        findViewById(R.id.meybe4),
+                        findViewById(R.id.meybe5)
+                };
+
+                new GetForecastDataTask(this, dateViews, maxTempViews, minTempViews, maybeViews).execute(forecastUrl);
             } else {
                 Toast.makeText(MainActivity.this, "Введіть назву міста", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-
-    private class GetForecastDataTask extends AsyncTask<String, Void, String> {
-        private TextView dataday1,dataday2,dataday3,dataday4,dataday5;
-        private TextView maxday1,maxday2,maxday3,maxday4,maxday5;
-        private TextView minday01, minday02,minday03,minday04,minday05;
-        private TextView meybe1,meybe2 ,meybe3, meybe4, meybe5;
-
-
-        @Override
-        protected String doInBackground(String... strings) {
-            dataday1 = findViewById(R.id.dataday1);
-            dataday2 = findViewById(R.id.dataday2);
-            dataday3 = findViewById(R.id.dataday3);
-            dataday4 = findViewById(R.id.dataday4);
-            dataday5 = findViewById(R.id.dataday5);
-
-
-
-            maxday1 = findViewById(R.id.maxday1);
-            maxday2 = findViewById(R.id.maxday2);
-            maxday3 = findViewById(R.id.maxday3);
-            maxday4 = findViewById(R.id.maxday4);
-            maxday5 = findViewById(R.id.maxday5);
-
-
-            minday01 = findViewById(R.id.day01);
-            minday02 = findViewById(R.id.day02);
-            minday03 = findViewById(R.id.day03);
-            minday04 = findViewById(R.id.day04);
-            minday05 = findViewById(R.id.day05);
-
-
-            meybe1=findViewById(R.id.meybe1);
-            meybe2=findViewById(R.id.meybe2);
-            meybe3=findViewById(R.id.meybe3);
-            meybe4=findViewById(R.id.meybe4);
-            meybe5=findViewById(R.id.meybe5);
-
-
-            HttpURLConnection connection = null;
-            BufferedReader reader = null;
-
-            try {
-                URL url = new URL(strings[0]);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
-
-                InputStream stream = connection.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(stream));
-                StringBuilder buffer = new StringBuilder();
-                String line;
-
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line).append("\n");
-                }
-
-                return buffer.toString();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            } finally {
-                if (connection != null) {
-                    connection.disconnect();
-                }
-                try {
-                    if (reader != null) {
-                        reader.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            if (result != null) {
-                try {
-                    JSONObject jsonObject = new JSONObject(result);
-                    JSONArray list = jsonObject.getJSONArray("list");
-
-                    // Очищаємо тексти перед оновленням даних
-                    clearForecastData();
-
-                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-                    SimpleDateFormat outputDateFormat = new SimpleDateFormat("EE.dd.MM", new Locale("uk", "UA"));
-
-                    String currentDate = "";
-                    double maxTemp = Double.MIN_VALUE;
-                    double minTemp = Double.MAX_VALUE;
-                    String weatherDescription = "";
-
-                    for (int i = 0; i < list.length(); i++) {
-                        JSONObject forecastItem = list.getJSONObject(i);
-                        JSONObject main = forecastItem.getJSONObject("main");
-                        JSONArray weatherArray = forecastItem.getJSONArray("weather");
-                        double temp = main.getDouble("temp");
-
-                        String dateTime = forecastItem.getString("dt_txt");
-                        Date parsedDate = inputFormat.parse(dateTime);
-                        String date = outputDateFormat.format(parsedDate);
-
-                        // Отримуємо опис погоди
-                        if (weatherArray.length() > 0) {
-                            JSONObject weatherObject = weatherArray.getJSONObject(0);
-                            weatherDescription = weatherObject.getString("description");
-                        }
-
-                        // Пропускаємо поточний день в прогнозі
-                        if (date.equals(outputDateFormat.format(new Date()))) {
-                            continue;
-                        }
-
-                        // Якщо дата змінилася або досягнута остання година прогнозу
-                        if (!date.equals(currentDate) || i == list.length() - 1) {
-                            // Додати дані до TextView для поточного дня
-                            addForecastData(currentDate, maxTemp, minTemp, weatherDescription);
-
-                            // Обнулити змінні для нового дня
-                            currentDate = date;
-                            maxTemp = Double.MIN_VALUE;
-                            minTemp = Double.MAX_VALUE;
-                        }
-
-                        // Оновити максимальну і мінімальну температуру для дня
-                        if (temp > maxTemp) {
-                            maxTemp = temp;
-                        }
-                        if (temp < minTemp) {
-                            minTemp = temp;
-                        }
-                    }
-
-                } catch (JSONException | ParseException e) {
-                    e.printStackTrace();
-                    Toast.makeText(MainActivity.this, "Помилка обробки даних прогнозу", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(MainActivity.this, "Помилка отримання даних прогнозу", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-        private void addForecastData(String date, double maxTemp, double minTemp, String weatherDescription) {
-            // Отримуємо текстові поля для опису погоди
-            TextView[] maybeViews = {meybe1, meybe2, meybe3, meybe4, meybe5};
-
-            for (TextView maybeView : maybeViews) {
-                if (maybeView.getText().toString().equals("")) {
-                    maybeView.setText(weatherDescription);
-                    break;
-                }
-            }
-
-            if (dataday1.getText().toString().equals("")) {
-                dataday1.setText(date);
-                maxday1.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
-                minday01.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
-            } else if (dataday2.getText().toString().equals("")) {
-                dataday2.setText(date);
-                maxday2.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
-                minday02.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
-            } else if (dataday3.getText().toString().equals("")) {
-                dataday3.setText(date);
-                maxday3.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
-                minday03.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
-            } else if (dataday4.getText().toString().equals("")) {
-                dataday4.setText(date);
-                maxday4.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
-                minday04.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
-            } else if (dataday5.getText().toString().equals("")) {
-                dataday5.setText(date);
-                maxday5.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
-                minday05.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
-            }
-        }
-
-        private void clearForecastData() {
-            dataday1.setText("");
-            dataday2.setText("");
-            dataday3.setText("");
-            dataday4.setText("");
-            dataday5.setText("");
-
-
-            maxday1.setText("");
-            maxday2.setText("");
-            maxday3.setText("");
-            maxday4.setText("");
-            maxday5.setText("");
-
-
-            minday01.setText("");
-            minday02.setText("");
-            minday03.setText("");
-            minday04.setText("");
-            minday05.setText("");
-
-        }
     }
 
     @SuppressLint("StaticFieldLeak")

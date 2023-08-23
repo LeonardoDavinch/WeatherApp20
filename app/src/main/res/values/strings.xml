@@ -17,7 +17,17 @@
     <string name="MeybyWeather" translatable="false">очікується</string>
     <string name="Dataday" translatable="false">Дата</string>
     <string name="button2" translatable="false">Дізнатись погоду на 5 днів </string>
-
+    <string name="hourly_forecast" translatable="false">огляд по годинам</string>
+    <string-array name="city_list">
+        <item>Київ</item>
+        <item>Львів</item>
+        <item>Харків</item>
+        <item>Стрий</item>
+        <item>Добряни</item>
+        <item>Миколаїв</item>
+        <item>Дніпро</item>
+        <!-- Додайте інші міста -->
+    </string-array>
 
 
 </resources>
