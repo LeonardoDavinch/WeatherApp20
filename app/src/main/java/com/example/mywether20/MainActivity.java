@@ -4,6 +4,8 @@ package com.example.mywether20;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,7 +58,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.user_field);
+
+        String lastCity = CityPreference.getCity(this);
+        autoCompleteTextView.setText(lastCity);
 
         // Отримання списку міст з ресурсів
         String[] cityList = getResources().getStringArray(R.array.city_list);
@@ -142,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
         main_button.setOnClickListener(view -> {
             String city = user_field.getText().toString().trim();
             if (!city.isEmpty()) {
+                CityPreference.setCity(this, city);
                 String apiKey = "6e8fe4fad218b24f3ca8504f36669203";
 
                 // URL для прогнозу на п'ять днів
@@ -190,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(R.id.day05)
                 };
 
-                TextView[] maybeViews = {
+                ImageView[] maybeViews = {
                         findViewById(R.id.meybe1),
                         findViewById(R.id.meybe2),
                         findViewById(R.id.meybe3),
@@ -203,7 +212,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Введіть назву міста", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
+
 
     @SuppressLint("StaticFieldLeak")
     private class GetWeatherDataTask extends AsyncTask<String, Void, String> {
@@ -244,7 +255,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        public class CityPreference {
+            private static final String PREFS_NAME = "CityPrefs";
+            private static final String KEY_CITY_NAME = "cityName";
 
+            public  String getCity(Context context) {
+                SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                return prefs.getString(KEY_CITY_NAME, ""); // Повертаємо пустий рядок якщо місто не знайдено
+            }
+
+            public  void setCity(Context context, String cityName) {
+                SharedPreferences.Editor editor = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
+                editor.putString(KEY_CITY_NAME, cityName);
+                editor.apply();
+            }
+        }
         @Override
         protected void onPostExecute(String result) {
             if (result != null) {
@@ -283,6 +308,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Помилка отримання даних", Toast.LENGTH_SHORT).show();
             }
         }
+
 
     }
 

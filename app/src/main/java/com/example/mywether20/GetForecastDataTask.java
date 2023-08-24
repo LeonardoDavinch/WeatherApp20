@@ -1,8 +1,11 @@
 package com.example.mywether20;
 
+import com.example.mywether20.R;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,18 +23,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
 @SuppressLint("StaticFieldLeak")
 public class GetForecastDataTask extends AsyncTask<String, Void, String> {
 
     private final TextView dataday1, dataday2, dataday3, dataday4, dataday5;
     private final TextView maxday1, maxday2, maxday3, maxday4, maxday5;
     private final TextView minday01, minday02, minday03, minday04, minday05;
-    private final   TextView meybe1, meybe2, meybe3, meybe4, meybe5;
+    private final ImageView meybe1, meybe2, meybe3, meybe4, meybe5;
 
     private final Context context;
 
     public GetForecastDataTask(Context context, TextView[] dateViews, TextView[] maxTempViews,
-                               TextView[] minTempViews, TextView[] maybeViews) {
+                               TextView[] minTempViews, ImageView[] maybeViews) {
         this.context = context;
         dataday1 = dateViews[0];
         dataday2 = dateViews[1];
@@ -57,6 +61,7 @@ public class GetForecastDataTask extends AsyncTask<String, Void, String> {
         meybe4 = maybeViews[3];
         meybe5 = maybeViews[4];
     }
+
     @Override
     protected String doInBackground(String... strings) {
         HttpURLConnection connection = null;
@@ -164,12 +169,15 @@ public class GetForecastDataTask extends AsyncTask<String, Void, String> {
     }
 
     private void addForecastData(String date, double maxTemp, double minTemp, String weatherDescription) {
-        // Отримуємо текстові поля для опису погоди
-        TextView[] maybeViews = {meybe1, meybe2, meybe3, meybe4, meybe5};
+        // Отримуємо ідентифікатор ресурсу зображення на основі умов погоди
+        int weatherImageResource = getWeatherImageResource(weatherDescription);
 
-        for (TextView maybeView : maybeViews) {
-            if (maybeView.getText().toString().equals("")) {
-                maybeView.setText(weatherDescription);
+        // Отримуємо ImageView для зображення погоди
+        ImageView[] maybeViews = {meybe1, meybe2, meybe3, meybe4, meybe5};
+
+        for (ImageView maybeView : maybeViews) {
+            if (maybeView.getDrawable() == null) {
+                maybeView.setImageResource(weatherImageResource);
                 break;
             }
         }
@@ -194,6 +202,42 @@ public class GetForecastDataTask extends AsyncTask<String, Void, String> {
             dataday5.setText(date);
             maxday5.setText(String.format(Locale.getDefault(), "%.1f °C", maxTemp));
             minday05.setText(String.format(Locale.getDefault(), "%.1f °C", minTemp));
+        }
+    }
+
+    private int getWeatherImageResource(String weatherDescription) {
+        switch (weatherDescription) {
+            case "чисте небо":
+                return R.drawable.sun;
+            case "уривчасті хмари":
+                return R.drawable.cloudy_3;
+            case "легкий дощ":
+                return R.drawable.rainy;
+            case "сніг":
+                return R.drawable.snowy;
+            case "кілька хмар":
+                return R.drawable.cloudy_3;
+            case "рвані хмари":
+                return R.drawable.cloudy_3;
+            case "кілька хмари":
+                return R.drawable.cloudy_3;
+            case "гроза":
+                return R.drawable.storm;
+            case "туман":
+                return R.drawable.cloudy_3;
+            case "мряка":
+                return R.drawable.droow;
+            case "похмуро":
+                return R.drawable.cloudy_3;
+            case "ливень":
+                return R.drawable.rainy;
+            case "снігопад":
+                return R.drawable.snowy;
+            case "небезпечні умови":
+                return R.drawable.droow;
+            // Додайте інші умови погоди тут з відповідними ресурсами
+            default:
+                return R.drawable.humidity;
         }
     }
 

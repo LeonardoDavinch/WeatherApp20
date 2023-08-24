@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <RelativeLayout
         android:id="@+id/Bac1"
         android:layout_width="match_parent"
@@ -16,22 +17,22 @@
             android:id="@+id/hourlyForecastLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_below="@id/main_button"
-            android:orientation="vertical"
-            android:background="@drawable/rounded_background">
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_background"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/hourlyForecastHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
                 android:text="@string/hourly_forecast"
                 android:textColor="@color/TextColor"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp" />
+                android:textStyle="bold" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -48,206 +49,229 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:padding="8dp">
+
                         <TextView
                             android:id="@+id/Hour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Година: "
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            />
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourText1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="00"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            />
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="01"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="02"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="03"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="04"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="05"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="06"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="07"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="08"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="09"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="10"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="11"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="12"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="13"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="14"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature15"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="15"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature16"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="16"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature17"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="17"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="18"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature19"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="19"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="20"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature21"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="21"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature22"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="22"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/hourTemperature23"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:text="23"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -255,6 +279,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:padding="8dp">
+
                         <TextView
                             android:id="@+id/TempHor"
                             android:layout_width="wrap_content"
@@ -262,175 +287,198 @@
                             android:text="Темп: "
                             android:textColor="@color/TextColor"
                             android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHoue0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/temperatureHoue1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou15"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou16"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou17"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou19"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou21"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou22"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/temperatureHou23"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="10dp"/>
+                            android:textSize="16sp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -767,9 +815,9 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
             android:layout_marginTop="900sp"
             android:layout_marginRight="10sp"
-            android:layout_marginLeft="10sp"
             android:background="@drawable/rounded_background">
 
             <TableRow
@@ -803,7 +851,6 @@
 
                 <TextView
                     android:id="@+id/headeMeybe"
-
                     android:padding="4dp"
                     android:text="@string/MeybyWeather"
                     android:textColor="@color/white"
@@ -832,10 +879,16 @@
                     android:padding="5dp"
                     android:textColor="@color/white" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/meybe1"
+                    android:layout_width="40dp"
+                    android:layout_gravity="center"
                     android:padding="8dp"
-                    android:textColor="@color/white" />
+                    android:scaleType="fitCenter"
+                    android:textColor="@color/white"
+                     />
+
+
             </TableRow>
 
             <TableRow
@@ -859,10 +912,14 @@
                     android:gravity="center_horizontal"
                     android:padding="5dp"
                     android:textColor="@color/white" />
-                <TextView
+
+                <ImageView
                     android:id="@+id/meybe2"
+                    android:layout_width="40dp"
+                    android:layout_gravity="center"
                     android:padding="8dp"
-                    android:textColor="@color/white" />
+                    android:scaleType="fitCenter"
+                    android:textColor="@color/white"/>
             </TableRow>
 
             <TableRow
@@ -886,10 +943,14 @@
                     android:gravity="center_horizontal"
                     android:padding="5dp"
                     android:textColor="@color/white" />
-                <TextView
+
+                <ImageView
                     android:id="@+id/meybe3"
+                    android:layout_width="40dp"
+                    android:layout_gravity="center"
                     android:padding="8dp"
-                    android:textColor="@color/white" />
+                    android:scaleType="fitCenter"
+                    android:textColor="@color/white"/>
             </TableRow>
 
             <TableRow
@@ -913,9 +974,13 @@
                     android:gravity="center_horizontal"
                     android:padding="5dp"
                     android:textColor="@color/white" />
-                <TextView
+
+                <ImageView
                     android:id="@+id/meybe4"
+                    android:layout_width="40dp"
+                    android:layout_gravity="center"
                     android:padding="8dp"
+                    android:scaleType="fitCenter"
                     android:textColor="@color/white" />
             </TableRow>
 
@@ -940,23 +1005,26 @@
                     android:gravity="center_horizontal"
                     android:padding="5dp"
                     android:textColor="@color/white" />
-                <TextView
+
+                <ImageView
                     android:id="@+id/meybe5"
+                    android:layout_width="40dp"
+                    android:layout_gravity="center"
                     android:padding="8dp"
+                    android:scaleType="fitCenter"
                     android:textColor="@color/white" />
             </TableRow>
-
-
         </TableLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="60dp"
             android:layout_gravity="bottom"
-            android:layout_marginTop="1190dp">
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="1250dp"
+            android:layout_marginRight="60dp"
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/B_Message"
@@ -964,8 +1032,8 @@
                 android:layout_height="60dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/rounded_background"
-                android:src="@android:drawable/ic_dialog_email"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                android:src="@android:drawable/ic_dialog_email" />
 
             <ImageButton
                 android:id="@+id/B_Google"
@@ -974,8 +1042,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/rounded_background"
-                android:src="@android:drawable/ic_menu_mapmode"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                android:src="@android:drawable/ic_menu_mapmode" />
 
             <ImageButton
                 android:id="@+id/B_Setting"
@@ -983,10 +1051,9 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/rounded_background"
-                android:src="@android:drawable/ic_popup_reminder"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                android:src="@android:drawable/ic_popup_reminder" />
         </LinearLayout>
-
 
 
     </RelativeLayout>
