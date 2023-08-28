@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 
 import android.os.Bundle;
 
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -50,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
             temperatureHoue14, temperatureHoue15, temperatureHoue16, temperatureHoue17,
             temperatureHoue18, temperatureHoue19, temperatureHoue20, temperatureHoue21,
             temperatureHoue22, temperatureHoue23;
+    private TextView hourTemperature0, hourTemperature1, hourTemperature2, hourTemperature3, hourTemperature4,
+            hourTemperature5, hourTemperature6, hourTemperature7, hourTemperature8, hourTemperature9, hourTemperature10,
+            hourTemperature11, hourTemperature12, hourTemperature13, hourTemperature14, hourTemperature15, hourTemperature16,
+            hourTemperature17, hourTemperature18, hourTemperature19, hourTemperature20, hourTemperature21, hourTemperature22,
+            hourTemperature23;
 
 
     @Override
@@ -58,12 +64,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.user_field);
 
         String lastCity = CityPreference.getCity(this);
         autoCompleteTextView.setText(lastCity);
+
 
         // Отримання списку міст з ресурсів
         String[] cityList = getResources().getStringArray(R.array.city_list);
@@ -81,6 +86,12 @@ public class MainActivity extends AppCompatActivity {
         // Додавання можливості ручного вводу
         autoCompleteTextView.setThreshold(1); // 1 символ
 
+
+        //обробка подій вибора міста
+        autoCompleteTextView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedCity = parent.getItemAtPosition(position).toString();
+            updateWeatherData(selectedCity);
+        });
 
         //Прослуховування кнопок
         ImageButtonHandler imageButtonHandler = new ImageButtonHandler(this);
@@ -122,7 +133,32 @@ public class MainActivity extends AppCompatActivity {
         temperatureHoue22 = findViewById(R.id.temperatureHou22);
         temperatureHoue23 = findViewById(R.id.temperatureHou23);
 
+        hourTemperature0 = findViewById(R.id.hourTemperature0);
+        hourTemperature1 = findViewById(R.id.hourTemperature1);
+        hourTemperature2 = findViewById(R.id.hourTemperature2);
+        hourTemperature3 = findViewById(R.id.hourTemperature3);
+        hourTemperature4 = findViewById(R.id.hourTemperature4);
+        hourTemperature5 = findViewById(R.id.hourTemperature5);
+        hourTemperature6 = findViewById(R.id.hourTemperature6);
+        hourTemperature7 = findViewById(R.id.hourTemperature7);
+        hourTemperature8 = findViewById(R.id.hourTemperature8);
+        hourTemperature9 = findViewById(R.id.hourTemperature9);
+        hourTemperature10 = findViewById(R.id.hourTemperature10);
+        hourTemperature11 = findViewById(R.id.hourTemperature11);
+        hourTemperature12 = findViewById(R.id.hourTemperature12);
+        hourTemperature13 = findViewById(R.id.hourTemperature13);
+        hourTemperature14 = findViewById(R.id.hourTemperature14);
+        hourTemperature15 = findViewById(R.id.hourTemperature15);
+        hourTemperature16 = findViewById(R.id.hourTemperature16);
+        hourTemperature17 = findViewById(R.id.hourTemperature17);
+        hourTemperature18 = findViewById(R.id.hourTemperature18);
+        hourTemperature19 = findViewById(R.id.hourTemperature19);
+        hourTemperature20 = findViewById(R.id.hourTemperature20);
+        hourTemperature21 = findViewById(R.id.hourTemperature21);
+        hourTemperature22 = findViewById(R.id.hourTemperature22);
+        hourTemperature23 = findViewById(R.id.hourTemperature23);
 
+        autoCompleteTextView = findViewById(R.id.user_field);
         // Отримати поточну годину
         Calendar cal = Calendar.getInstance();
         int currentHour = cal.get(Calendar.HOUR_OF_DAY);
@@ -138,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         user_field = findViewById(R.id.user_field);
-        Button main_button = findViewById(R.id.main_button);
         res_temp = findViewById(R.id.res_temp);
         res_winter = findViewById(R.id.res_winter);
         res_Humidity = findViewById(R.id.res_Humidity);
@@ -146,73 +181,74 @@ public class MainActivity extends AppCompatActivity {
         res_Show = findViewById(R.id.res_Show);
         res_Tis = findViewById(R.id.res_Tis);
         res_data = findViewById(R.id.res_data);
+        updateWeatherData(lastCity);
+    }
 
-        main_button.setOnClickListener(view -> {
-            String city = user_field.getText().toString().trim();
-            if (!city.isEmpty()) {
-                CityPreference.setCity(this, city);
-                String apiKey = "6e8fe4fad218b24f3ca8504f36669203";
+    private void updateWeatherData(String city) {
+        CityPreference.setCity(this, city);
+        String apiKey = "6e8fe4fad218b24f3ca8504f36669203";
 
-                // URL для прогнозу на п'ять днів
-                String forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" +
-                        city + "&appid=" + apiKey + "&units=metric&lang=uk";
+        // URL для прогнозу на п'ять днів
+        String forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" +
+                city + "&appid=" + apiKey + "&units=metric&lang=uk";
 
-                // URL для поточної погоди
-                String currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" +
-                        city + "&appid=" + apiKey + "&units=metric&lang=uk";
+        // URL для поточної погоди
+        String currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" +
+                city + "&appid=" + apiKey + "&units=metric&lang=uk";
 
-                TextView[] hourTemperatureViews = {
-                        temperatureHoue0, temperatureHoue1, temperatureHoue2, temperatureHoue3, temperatureHoue4,
-                        temperatureHoue5, temperatureHoue6, temperatureHoue7, temperatureHoue8, temperatureHoue9,
-                        temperatureHoue10, temperatureHoue11, temperatureHoue12, temperatureHoue13, temperatureHoue14,
-                        temperatureHoue15, temperatureHoue16, temperatureHoue17, temperatureHoue18, temperatureHoue19,
-                        temperatureHoue20, temperatureHoue21, temperatureHoue22, temperatureHoue23
-                };
+        TextView[] hourTemperatureViews = {
+                temperatureHoue0, temperatureHoue1, temperatureHoue2, temperatureHoue3, temperatureHoue4,
+                temperatureHoue5, temperatureHoue6, temperatureHoue7, temperatureHoue8, temperatureHoue9,
+                temperatureHoue10, temperatureHoue11, temperatureHoue12, temperatureHoue13, temperatureHoue14,
+                temperatureHoue15, temperatureHoue16, temperatureHoue17, temperatureHoue18, temperatureHoue19,
+                temperatureHoue20, temperatureHoue21, temperatureHoue22, temperatureHoue23
+        };
+        TextView[] hourTimeViews = {
+                hourTemperature0, hourTemperature1, hourTemperature2, hourTemperature3, hourTemperature4,
+                hourTemperature5, hourTemperature6, hourTemperature7, hourTemperature8, hourTemperature9, hourTemperature10,
+                hourTemperature11, hourTemperature12, hourTemperature13, hourTemperature14, hourTemperature15, hourTemperature16,
+                hourTemperature17, hourTemperature18, hourTemperature19, hourTemperature20, hourTemperature21, hourTemperature22,
+                hourTemperature23
+        };
 
-                String hourlyWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" +
-                        city + "&appid=" + apiKey + "&units=metric&lang=uk";
+        String hourlyWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" +
+                city + "&appid=" + apiKey + "&units=metric&lang=uk";
 
-                new GetHourlyTemperatureTask(hourTemperatureViews).execute(hourlyWeatherUrl);
+        new GetHourlyTemperatureTask(hourTemperatureViews, hourTimeViews).execute(hourlyWeatherUrl);
 
-                new GetWeatherDataTask().execute(currentWeatherUrl);
-                TextView[] dateViews = {
-                        findViewById(R.id.dataday1),
-                        findViewById(R.id.dataday2),
-                        findViewById(R.id.dataday3),
-                        findViewById(R.id.dataday4),
-                        findViewById(R.id.dataday5)
-                };
+        new GetWeatherDataTask().execute(currentWeatherUrl);
+        TextView[] dateViews = {
+                findViewById(R.id.dataday1),
+                findViewById(R.id.dataday2),
+                findViewById(R.id.dataday3),
+                findViewById(R.id.dataday4),
+                findViewById(R.id.dataday5)
+        };
 
-                TextView[] maxTempViews = {
-                        findViewById(R.id.maxday1),
-                        findViewById(R.id.maxday2),
-                        findViewById(R.id.maxday3),
-                        findViewById(R.id.maxday4),
-                        findViewById(R.id.maxday5)
-                };
+        TextView[] maxTempViews = {
+                findViewById(R.id.maxday1),
+                findViewById(R.id.maxday2),
+                findViewById(R.id.maxday3),
+                findViewById(R.id.maxday4),
+                findViewById(R.id.maxday5)
+        };
 
-                TextView[] minTempViews = {
-                        findViewById(R.id.day01),
-                        findViewById(R.id.day02),
-                        findViewById(R.id.day03),
-                        findViewById(R.id.day04),
-                        findViewById(R.id.day05)
-                };
+        TextView[] minTempViews = {
+                findViewById(R.id.day01),
+                findViewById(R.id.day02),
+                findViewById(R.id.day03),
+                findViewById(R.id.day04),
+                findViewById(R.id.day05)
+        };
 
-                ImageView[] maybeViews = {
-                        findViewById(R.id.meybe1),
-                        findViewById(R.id.meybe2),
-                        findViewById(R.id.meybe3),
-                        findViewById(R.id.meybe4),
-                        findViewById(R.id.meybe5)
-                };
-
-                new GetForecastDataTask(this, dateViews, maxTempViews, minTempViews, maybeViews).execute(forecastUrl);
-            } else {
-                Toast.makeText(MainActivity.this, "Введіть назву міста", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        ImageView[] maybeViews = {
+                findViewById(R.id.meybe1),
+                findViewById(R.id.meybe2),
+                findViewById(R.id.meybe3),
+                findViewById(R.id.meybe4),
+                findViewById(R.id.meybe5)
+        };
+        new GetForecastDataTask(this, dateViews, maxTempViews, minTempViews, maybeViews).execute(forecastUrl);
     }
 
 
@@ -255,21 +291,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
         public class CityPreference {
             private static final String PREFS_NAME = "CityPrefs";
             private static final String KEY_CITY_NAME = "cityName";
 
-            public  String getCity(Context context) {
+            public String getCity(Context context) {
                 SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
                 return prefs.getString(KEY_CITY_NAME, ""); // Повертаємо пустий рядок якщо місто не знайдено
             }
 
-            public  void setCity(Context context, String cityName) {
+            public void setCity(Context context, String cityName) {
                 SharedPreferences.Editor editor = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
                 editor.putString(KEY_CITY_NAME, cityName);
                 editor.apply();
             }
         }
+
         @Override
         protected void onPostExecute(String result) {
             if (result != null) {

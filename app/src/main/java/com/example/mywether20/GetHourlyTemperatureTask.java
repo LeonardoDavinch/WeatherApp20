@@ -13,13 +13,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 public class GetHourlyTemperatureTask extends AsyncTask<String, Void, String> {
 
     private TextView[] hourTemperatureViews;
+    private TextView[]hourTimeViews;
 
-    public GetHourlyTemperatureTask(TextView[] hourTemperatureViews) {
+    public GetHourlyTemperatureTask(TextView[] hourTemperatureViews,TextView[]hourTimeViews) {
         this.hourTemperatureViews = hourTemperatureViews;
+        this.hourTimeViews=hourTimeViews;
     }
 
     @Override
@@ -72,7 +76,16 @@ public class GetHourlyTemperatureTask extends AsyncTask<String, Void, String> {
                     JSONObject main = hourData.getJSONObject("main");
                     int temperature = (int) Math.round(main.getDouble("temp"));
 
-                    hourTemperatureViews[i].setText(String.format(Locale.getDefault(), "%d", temperature));
+                    hourTemperatureViews[i].setText(String.format(Locale.getDefault(), "%d°", temperature));
+
+                    // Отримання години
+                    int hour = i;
+
+                    // Форматування години у "HH" формат
+                    String formattedHour = String.format(Locale.getDefault(), "%02d", hour);
+
+                    // Встановлення тексту для відповідного TextView елемента для години
+                    hourTimeViews[i].setText(formattedHour);
                 }
 
             } catch (JSONException e) {
