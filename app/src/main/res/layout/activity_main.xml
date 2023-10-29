@@ -13,6 +13,17 @@
         android:background="@drawable/day"
         tools:context=".MainActivity">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/TableDown"
+            android:text="Author by Vitalii Hanusiak."
+            android:textColor="@color/white"
+            android:textStyle="italic"/>
+
         <LinearLayout
             android:id="@+id/hourlyForecastLayout"
             android:layout_width="match_parent"
@@ -659,6 +670,7 @@
             android:hint="@string/hint_user_field"
             android:textAlignment="center"
             android:textColor="@color/white"
+            android:textStyle="bold"
             android:textColorHint="@color/white" />
 
 
@@ -666,7 +678,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="147dp"
-            android:layout_marginVertical="580sp"
+            android:layout_marginVertical="600sp"
             android:layout_marginStart="40sp"
             android:layout_marginEnd="40sp"
             android:background="@drawable/rounded_background"
@@ -780,27 +792,18 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/user_field"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="320sp"
             android:ems="10"
             android:textAlignment="center"
             android:textColor="@color/TextColor"
             android:textColorHint="@color/textColorHint" />
 
-        <TableLayout
-            android:id="@+id/tableLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="330dp"
-            android:layout_marginTop="700sp"
-            android:shrinkColumns="*"
-            android:stretchColumns="*" />
-
         <TableRow
             android:id="@+id/tableRow4"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="153dp"
+            android:layout_height="82dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="740sp"
-            android:gravity="center_horizontal">
+            android:layout_marginTop="730sp">
 
             <ImageView
                 android:layout_width="40sp"
@@ -826,17 +829,21 @@
         </TableRow>
 
         <TableLayout
+            android:id="@+id/tableDayWather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
+            android:layout_marginLeft="20sp"
             android:layout_marginTop="830sp"
-            android:layout_marginRight="10sp"
+            android:layout_marginRight="20sp"
             android:background="@drawable/rounded_background">
 
             <TableRow
                 android:id="@+id/tableRowHeader"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                >
 
                 <TextView
                     android:id="@+id/headerDate"
@@ -873,8 +880,10 @@
 
             <TableRow
                 android:id="@+id/tableRow1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="30sp">
 
                 <TextView
                     android:id="@+id/dataday1"
@@ -900,17 +909,15 @@
                     android:layout_gravity="center"
                     android:padding="8dp"
                     android:scaleType="fitCenter"
-                    android:textColor="@color/white"
-                     />
-
-
-
+                    android:textColor="@color/white" />
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp">
 
                 <TextView
                     android:id="@+id/dataday2"
@@ -941,7 +948,9 @@
             <TableRow
                 android:id="@+id/tableRow3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp">
 
                 <TextView
                     android:id="@+id/dataday3"
@@ -972,12 +981,15 @@
             <TableRow
                 android:id="@+id/tableRow41"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp">
 
                 <TextView
                     android:id="@+id/dataday4"
                     android:padding="8dp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    />
 
                 <TextView
                     android:id="@+id/day04"
@@ -1003,12 +1015,15 @@
             <TableRow
                 android:id="@+id/tableRow5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp">
 
                 <TextView
                     android:id="@+id/dataday5"
                     android:padding="8dp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    />
 
                 <TextView
                     android:id="@+id/day05"
@@ -1034,17 +1049,19 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/TableDown"
+            android:layout_width="287dp"
+            android:layout_height="62dp"
+            android:layout_below="@id/tableDayWather"
             android:layout_gravity="bottom"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="1200dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="40sp"
+            android:layout_marginRight="50dp"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/B_Message"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="60dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/rounded_background"
@@ -1053,7 +1070,7 @@
 
             <ImageButton
                 android:id="@+id/B_Google"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
@@ -1062,8 +1079,8 @@
                 android:src="@android:drawable/ic_menu_mapmode" />
 
             <ImageButton
-                android:id="@+id/B_Setting"
-                android:layout_width="60dp"
+                android:id="@+id/B_InformationAuthor"
+                android:layout_width="80dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/rounded_background"

@@ -234,10 +234,10 @@ public class GetForecastDataTask extends AsyncTask<String, Void, String> {
             case "снігопад":
                 return R.drawable.snowy;
             case "небезпечні умови":
-                return R.drawable.droow;
+                return R.drawable.humidity;
             // Додайте інші умови погоди тут з відповідними ресурсами
             default:
-                return R.drawable.humidity;
+                return R.drawable.cloudy_3;
         }
     }
 

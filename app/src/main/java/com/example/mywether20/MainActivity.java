@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton b_Message = findViewById(R.id.B_Message);
         ImageButton b_Google = findViewById(R.id.B_Google);
-        ImageButton b_Setting = findViewById(R.id.B_Setting);
+        ImageButton b_Setting = findViewById(R.id.B_InformationAuthor);
 
         b_Message.setOnClickListener(imageButtonHandler);
         b_Google.setOnClickListener(imageButtonHandler);

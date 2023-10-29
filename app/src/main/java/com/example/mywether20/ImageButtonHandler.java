@@ -1,9 +1,7 @@
 package com.example.mywether20;
 
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
@@ -11,21 +9,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
 public class ImageButtonHandler  implements View.OnClickListener {
     private final MainActivity parentActivity;
-    private ImageButton B_Message, B_Google, B_Setting;
+    private ImageButton B_Message, B_Google, InformationAurhor;
 
     public ImageButtonHandler(MainActivity parentActivity) {
         this.parentActivity = parentActivity;
         B_Message = parentActivity.findViewById(R.id.B_Message);
         B_Google = parentActivity.findViewById(R.id.B_Google);
-        B_Setting = parentActivity.findViewById(R.id.B_Setting);
+        InformationAurhor = parentActivity.findViewById(R.id.B_InformationAuthor);
 
-        B_Message.setOnClickListener(this); // Додати обробник кліку до кнопки B_Message
+        B_Message.setOnClickListener(this);
         B_Google.setOnClickListener(this);
-        B_Setting.setOnClickListener(this);
+        InformationAurhor.setOnClickListener(this);
     }
 
     @Override
@@ -33,19 +29,18 @@ public class ImageButtonHandler  implements View.OnClickListener {
         int clickedId = view.getId();
 
         if (clickedId == R.id.B_Message) {
-            // При натисканні кнопки "Повідомлення" відобразити діалогове вікно для відправки повідомлення
             showSendMessageDialog();
         } else if (clickedId == R.id.B_Google) {
-            // Відкрити веб-сайт за вказаною посиланням
             String websiteUrl = "https://openweathermap.org/";
+            // Відкриваємо веб-сайт за вказаною посиланням
             Intent websiteIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));
             parentActivity.startActivity(websiteIntent);
-        } else if (clickedId == R.id.B_Setting) {
-            Toast.makeText(parentActivity, "Натиснули кнопку 'Налаштування'", Toast.LENGTH_SHORT).show();
+        } else if (clickedId == R.id.B_InformationAuthor) {
+            // При натисканні кнопки "Налаштування" відображаємо вікно з інформацією про розробника
+            showDeveloperInfoDialog();
         }
     }
 
-    // Метод для відображення діалогового вікна для відправки повідомлення
     private void showSendMessageDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
         builder.setTitle(" Відправити повідомлення");
@@ -71,6 +66,21 @@ public class ImageButtonHandler  implements View.OnClickListener {
         });
 
         builder.setNegativeButton("Скасувати", (dialogInterface, i) -> dialogInterface.cancel());
+
+        builder.show();
+    }
+
+    private void showDeveloperInfoDialog() {
+        // Створюємо діалогове вікно з інформацією про розробника
+        AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
+        builder.setTitle("Інформація про розробника");
+        builder.setMessage("Розроблено: Ганусяк В.С\n" +
+                "Електронна пошта: leonardo20prof@gmail.com\n" +
+                "Версія додатку: 1.0");
+
+        builder.setPositiveButton("Закрити", (dialogInterface, i) -> {
+            dialogInterface.dismiss();
+        });
 
         builder.show();
     }
